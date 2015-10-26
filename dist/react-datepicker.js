@@ -174,6 +174,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 
+	  onClearClick: function onClearClick(event) {
+	    event.preventDefault();
+	    this.clearSelected();
+	  },
+
 	  calendar: function calendar() {
 	    if (this.state.focus) {
 	      return React.createElement(
@@ -202,7 +207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    var clearButton = null;
 	    if (this.props.isClearable && this.state.selected != null) {
-	      clearButton = React.createElement("a", { className: "close-icon", href: "#", onClick: this.clearSelected });
+	      clearButton = React.createElement("a", { className: "close-icon", href: "#", onClick: this.onClearClick });
 	    }
 
 	    return React.createElement(
@@ -21103,9 +21108,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  toggleFocus: function toggleFocus(focus) {
 	    if (focus) {
-	      ReactDOM.findDOMNode(this.refs.input).focus();
+	      this.refs.input.focus();
 	    } else {
-	      ReactDOM.findDOMNode(this.refs.input).blur();
+	      this.refs.input.blur();
 	    }
 	  },
 
